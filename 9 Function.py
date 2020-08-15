@@ -11,41 +11,83 @@ history = {}
 
 ##FUNCTIONS####################################################################
 def sin():
-    s = float(value.get())
-    history[f'sin({s})'] = f'{math.sin(math.radians(s))}'
-    mbx.showinfo(f'sin({s})=', math.sin(math.radians(s)))
+    try:
+        s = float(value.get())
+        history[f'sin({s})'] = f'{math.sin(math.radians(s))}'
+        mbx.showinfo(f'sin({s})=', math.sin(math.radians(s)))
+    except ValueError:
+        mbx.showerror('Error', """That's not a valid entry.\nPlease enter a number and try again.""")
 def cos():
-    s = float(value.get())
-    history[f'cos({s})'] = f'{math.cos(math.radians(s))}'
-    mbx.showinfo(f'cos({s})=', math.cos(math.radians(s)))
+    try:
+        s = float(value.get())
+        history[f'cos({s})'] = f'{math.cos(math.radians(s))}'
+        mbx.showinfo(f'cos({s})=', math.cos(math.radians(s)))
+    except ValueError:
+        mbx.showerror('Error', "That's not a valid entry.\nPlease enter a number and try again.")
 def tan():
-    s = float(value.get())
-    history[f'tan({s})'] = f'{math.tan(math.radians(s))}'
-    mbx.showinfo(f'tan({s})=', math.tan(math.radians(s)))
+    try:
+        s = float(value.get())
+        history[f'tan({s})'] = f'{math.tan(math.radians(s))}'
+        mbx.showinfo(f'tan({s})=', math.tan(math.radians(s)))
+    except ValueError:
+        mbx.showerror('Error:', "That's not a valid entry.\nPlease enter a number and try again.")
 def asin():
-    s = float(value.get())
-    history[f'asin({s})'] = f'{math.asin(math.radians(s))}'
-    mbx.showinfo(f'asin({s})=', math.asin(math.radians(s)))
+    try:
+        s = float(value.get())
+        if s > 1 or s < -1:
+            mbx.showerror('Domain Error:','Please enter a number on [-1,1] and try again.')
+        else:
+            history[f'asin({s})'] = f'{math.asin(math.radians(s))}'
+            mbx.showinfo(f'asin({s})=', math.asin(math.radians(s)))
+    except ValueError:
+        mbx.showerror('Error', "That's not a valid entry.\nPlease enter a number and try again.")
 def acos():
-    s = float(value.get())
-    history[f'acos({s})'] = f'{math.acos(math.radians(s))}'
-    mbx.showinfo(f'acos({s})=', math.acos(math.radians(float(s))))
+    try:
+        s = float(value.get())
+        if s > 1 or s < -1:
+            mbx.showerror('Domain Error:','Please enter a number on [-1,1] and try again.')
+        else:
+            history[f'acos({s})'] = f'{math.acos(math.radians(s))}'
+            mbx.showinfo(f'acos({s})=', math.acos(math.radians(float(s))))
+    except ValueError:
+        mbx.showerror('Error', "That's not a valid entry.\nPlease enter a number and try again.")
 def atan():
-    s = float(value.get())
-    history[f'atan({s})'] = f'{math.atan(math.radians(s))}'
-    mbx.showinfo(f'atan({s})=', math.atan(math.radians(float(s))))
+    try:
+        s = float(value.get())
+        if s > 1 or s < -1:
+            mbx.showerror('Domain Error:','Please enter a number on [-1,1] and try again.')
+        else:
+            history[f'atan({s})'] = f'{math.atan(math.radians(s))}'
+            mbx.showinfo(f'atan({s})=', math.atan(math.radians(float(s))))
+    except ValueError:
+        mbx.showerror('Error', "That's not a valid entry.\nPlease enter a number and try again.")
 def ln():
-    s = float(value.get())
-    history[f'ln({s})'] = f'{math.log(math.radians(s))}'
-    mbx.showinfo(f'ln({s})=', math.log(float(s)))
+    try:
+        s = float(value.get())
+        if s < 0:
+            mbx.showerror('Domain Error:','Please enter a number > 0 and try again.')
+        else:
+            history[f'ln({s})'] = f'{math.log(math.radians(s))}'
+            mbx.showinfo(f'ln({s})=', math.log(float(s)))
+    except ValueError:
+        mbx.showerror('Error', "That's not a valid entry.\nPlease enter a number and try again.")
 def sqrt():
-    s = float(value.get())
-    history[f'√({s})'] = f'{math.sqrt(s)}'
-    mbx.showinfo(f'√{s}=', math.sqrt(float(s)))
+    try:
+        s = float(value.get())
+        if s < 0:
+            mbx.showerror('Domain Error:','Please enter a number > 0 and try again.')
+        else:
+            history[f'√({s})'] = f'{math.sqrt(s)}'
+            mbx.showinfo(f'√{s}=', math.sqrt(float(s)))
+    except ValueError:
+        mbx.showerror('Error', "That's not a valid entry.\nPlease enter a number and try again.")
 def fact():
-    s = int(value.get())
-    history[f'{s}!'] = f'{math.factorial(s)}'
-    mbx.showinfo(f'{s}!=', math.factorial(s))
+    try:
+        s = int(value.get())
+        history[f'{s}!'] = f'{math.factorial(s)}'
+        mbx.showinfo(f'{s}!=', math.factorial(s))
+    except ValueError:
+        mbx.showerror('Error', "That's not a valid entry.\nPlease enter a positive interger and try again.")
 def exit():
     top.destroy()
     print("Thank you for using my program! \nHeres'a list of the opperations you performed:\n")
